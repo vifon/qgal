@@ -1,6 +1,9 @@
 qgal — quick gallery
 ====================
 
+[![](https://raw.githubusercontent.com/Vifon/qgal/master/examples/example-desktop-thumbnail.png)](https://raw.githubusercontent.com/Vifon/qgal/master/examples/example-desktop.png)
+[![](https://raw.githubusercontent.com/Vifon/qgal/master/examples/example-mobile-thumbnail.png)](https://raw.githubusercontent.com/Vifon/qgal/master/examples/example-mobile.png)
+
 `qgal` was intended as a `python3 -m http.server` focused on images.
 It serves the current directory via HTTP (by default on
 `0.0.0.0:5000`) with the previews of all the images in it. The served
