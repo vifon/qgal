@@ -19,6 +19,7 @@ Some of `qgal`'s goals:
 What can to be improved:
 - [ ] server-side image downscaling for the previews
 - [ ] partial/range HTTP requests for audio/video streaming
+- [ ] rotate the previews according to the EXIF data (currently supported only on Firefox)
 
 Installation
 ------------
