@@ -25,11 +25,15 @@ Installation
 
 1. Clone this repository:
 
-    $ git clone https://github.com/vifon/qgal
+```
+$ git clone https://github.com/vifon/qgal
+```
 
 2. Place a symlink to the `run.sh` wrapper in your `$PATH`, for example:
 
-    # ln -s /path/to/qgal/run.sh /usr/local/bin/qgal
+```
+# ln -s /path/to/qgal/run.sh /usr/local/bin/qgal
+```
 
 3. Run `qgal` wherever it is needed!
 
