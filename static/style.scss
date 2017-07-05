@@ -7,12 +7,10 @@ body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-  display: block;
+  display: inline-block;
 }
 
 .box {
-  -moz-box-shadow: 0 0 2px 2px #aaa;
-  -webkit-box-shadow: 0 0 2px 2px #aaa;
   box-shadow: 0 0 2px 2px #aaa;
 }
 
