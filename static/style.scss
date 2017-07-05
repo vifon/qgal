@@ -1,0 +1,76 @@
+@import 'https://fonts.googleapis.com/css?family=Libre+Baskerville';
+
+body {
+  font-family: 'Libre Baskerville', 'Times New Roman', 'Times', 'serif';
+  background-color: #333;
+  color: #ddd;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  display: block;
+}
+
+.box {
+  -moz-box-shadow: 0 0 2px 2px #aaa;
+  -webkit-box-shadow: 0 0 2px 2px #aaa;
+  box-shadow: 0 0 2px 2px #aaa;
+}
+
+section.box {
+  padding: 0.5em;
+  padding-right: 1em;
+
+  margin: 1em;
+}
+
+.images,
+.directories,
+.files {
+  display: flex;
+  flex-wrap: wrap;
+  @media not screen and (min-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.images > *,
+.directories > *,
+.files > * {
+  display: inline-block;
+  margin: 0.5em;
+  padding: 0.5em;
+  @media screen and (min-width: 768px) {
+    width: 15em;
+  }
+}
+
+.image {
+  display: flex;
+  align-items: center;
+}
+
+.image img {
+  display: block;
+  max-width: 15em;
+  max-height: 20em;
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+.dirname {
+  font-weight: bold;
+}
+.dirname:after {
+  content: "/";
+}
+
+.fa-folder-open{
+  color: #f8c63d;
+}
+
+a{text-decoration: none;}
+a:link{color: #ddd;}
+a:visisted{color: #555;}
+a:hover{color: #eee; font-weight: bold;}
+a:active{color: yellow;}

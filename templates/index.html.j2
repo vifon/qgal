@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename="style.css")}}">
+    <script src="https://use.fontawesome.com/8d63858b09.js"></script>
+  </head>
+
+  <body>
+    <h1 class="dirname">{{ dirname }}</h1>
+    {% if images %}
+      <section class="box">
+        <h3>Images</h3>
+        <div class="images">
+          {% for f in images %}
+            <a href="{{ f }}" class="image box">
+              <img src="{{ f }}">
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    <br style="clear: both;">
+
+    {% if directories %}
+      <section class="box">
+        <h3>Directories</h3>
+        <div class="directories">
+          {% for f in directories %}
+            <a href="{{ f }}" class="directory box">
+              <i class="fa fa-folder-open" aria-hidden="true"></i>
+              <span class="dirname">{{ f | basename }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    <br style="clear: both;">
+
+    {% if files %}
+      <section class="box">
+        <h3>Files</h3>
+        <div class="files">
+          {% for f in files %}
+            <a href="{{ f }}" class="file box">
+              <i class="fa fa-file" aria-hidden="true"></i>
+              <span class="filename">{{ f | basename }}</span>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+
+    <br style="clear: both;">
+  </body>
+</html>
