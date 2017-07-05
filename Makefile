@@ -1,9 +1,12 @@
+SCSS=scss --sourcemap=none
+
 all:
-	find static/ -name '*.scss' | while read REPLY; do echo "$${REPLY%%.scss}.css"; done | xargs make
+	$(SCSS) --update static:static
+
+watch:
+	$(SCSS) --watch static:static
 
 clean:
 	find static/ -name '*.css' -exec $(RM) {} +
-
-.SUFFIXES: .css .scss
-%.css: %.scss
-	scss "$<" > "$@"
+	$(RM) -r ./static/.sass-cache
+	$(RM) -r ./.sass-cache
