@@ -48,7 +48,7 @@ def serve_directory(dirname):
     }
 
     return render_template(
-        "index.html.j2",
+        "index.html",
         **template_args,
     )
 
