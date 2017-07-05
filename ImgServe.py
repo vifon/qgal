@@ -45,6 +45,7 @@ def serve_directory(dirname):
         'all': sorted(all_files),
         'images': sorted(images),
         'dirname': dirname,
+        'appname': app.name,
     }
 
     return render_template(
