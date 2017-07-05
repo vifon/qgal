@@ -28,7 +28,7 @@ def is_image(filename):
     modifiers = [identity, str.upper]
     for ext in extensions:
         for mod in modifiers:
-            if filename.endswith(ext):
+            if filename.endswith(mod(ext)):
                 return True
     return False
 
