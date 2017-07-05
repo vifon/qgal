@@ -24,12 +24,9 @@ def serve_file(filename):
 def is_image(filename):
     """Check if the file is an image (judging by the extension)."""
     extensions = ["." + ext for ext in "jpg jpeg gif png".split()]
-    identity = lambda x: x
-    modifiers = [identity, str.upper]
     for ext in extensions:
-        for mod in modifiers:
-            if filename.endswith(mod(ext)):
-                return True
+        if filename.lower().endswith(ext):
+            return True
     return False
 
 def serve_directory(dirname):
