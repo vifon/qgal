@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, safe_join
 from flaskrun import flaskrun
 import os
 
@@ -34,7 +34,7 @@ def is_image(filename):
 
 def serve_directory(dirname):
     """Show a gallery."""
-    all_files = set(os.path.join(dirname, f) for f in os.listdir(dirname))
+    all_files = set(safe_join(dirname, f) for f in os.listdir(dirname))
     directories = set(filter(os.path.isdir, all_files))
     images = set(filter(is_image, all_files))
     regular_files = all_files - images - directories
