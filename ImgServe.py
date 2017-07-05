@@ -10,7 +10,7 @@ app.jinja_env.filters['basename'] = os.path.basename
 
 
 @app.route("/", defaults={'filename': "."})
-@app.route("/<path:filename>")
+@app.route("/<path:filename>/")
 def serve_gallery(filename):
     if os.path.isdir(filename):
         return serve_directory(filename)

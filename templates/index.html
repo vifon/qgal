@@ -9,7 +9,17 @@
   </head>
 
   <body>
-    <h1 class="dirname">{{ dirname }}</h1>
+
+    <h1>
+      {% if dirname == "." %}
+        {{ dirname }} /
+      {% else %}
+        {% for segment in ["."] + dirname.split("/") %}
+          <a href="{{ "../" * loop.revindex0 }}">{{ segment }} /</a>
+        {% endfor %}
+      {% endif %}
+    </h1>
+
     {% if images %}
       <section class="box">
         <details open>
@@ -18,8 +28,8 @@
           </summary>
           <div class="images">
             {% for f in images %}
-              <a href="{{ f }}" class="image box">
-                <img src="{{ f }}">
+              <a href="{{ f | basename }}" class="image box">
+                <img src="{{ f | basename }}">
               </a>
             {% endfor %}
           </div>
@@ -36,7 +46,7 @@
           </summary>
           <div class="directories">
             {% for f in directories %}
-              <a href="{{ f }}" class="directory box">
+              <a href="{{ f | basename }}" class="directory box">
                 <i class="fa fa-folder-open" aria-hidden="true"></i>
                 <span class="dirname">{{ f | basename }}</span>
               </a>
@@ -55,7 +65,7 @@
           </summary>
           <div class="files">
             {% for f in files %}
-              <a href="{{ f }}" class="file box">
+              <a href="{{ f | basename }}" class="file box">
                 <i class="fa fa-file" aria-hidden="true"></i>
                 <span class="filename">{{ f | basename }}</span>
               </a>
@@ -65,5 +75,6 @@
       </section>
       <br style="clear: both;">
     {% endif %}
+
   </body>
 </html>
