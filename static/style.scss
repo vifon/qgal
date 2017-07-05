@@ -65,6 +65,10 @@ section.box {
   content: "/";
 }
 
+.filename, .dirname {
+  word-wrap: break-word;
+}
+
 .fa-folder-open{
   color: #f8c63d;
 }
