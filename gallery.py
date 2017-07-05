@@ -53,4 +53,4 @@ def serve_directory(dirname):
     )
 
 if __name__ == '__main__':
-    flaskrun(app)
+    flaskrun(app, threaded=True)
