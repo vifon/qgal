@@ -4,4 +4,4 @@
 # important because Flask needs to know where to look for its
 # resources.
 
-exec "$(dirname "$(readlink -f "$0")")"/ImgServe.py "$@"
+exec "$(dirname "$(readlink -f "$0")")"/qgal.py "$@"
