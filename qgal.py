@@ -4,6 +4,11 @@ from flask import Flask, render_template, send_from_directory, safe_join
 from flaskrun import flaskrun
 import os
 
+try:
+    from natsort import natsorted as sort
+except ImportError:
+    sort = sorted
+
 app = Flask(__name__)
 app.jinja_env.filters['dirname'] = os.path.dirname
 app.jinja_env.filters['basename'] = os.path.basename
@@ -37,10 +42,10 @@ def serve_directory(dirname):
     regular_files = all_files - images - directories
 
     template_args = {
-        'directories': sorted(directories),
-        'files': sorted(regular_files),
-        'all': sorted(all_files),
-        'images': sorted(images),
+        'directories': sort(directories),
+        'files': sort(regular_files),
+        'all': sort(all_files),
+        'images': sort(images),
         'dirname': dirname,
         'appname': app.name,
     }
