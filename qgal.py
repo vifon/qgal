@@ -52,7 +52,7 @@ def serve_directory(dirname):
 
     return render_template(
         "index.html",
-        **template_args,
+        **template_args
     )
 
 if __name__ == '__main__':
