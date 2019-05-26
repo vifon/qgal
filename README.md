@@ -20,7 +20,7 @@ Some of `qgal`'s goals:
 - [X] minimal dependencies: Python 3 and Flask
 
 What can to be improved:
-- [ ] server-side image downscaling for the previews
+- [X] server-side image downscaling for the previews
 - [ ] partial/range HTTP requests for audio/video streaming
 - [ ] rotate the previews according to the EXIF data (currently supported only on Firefox)
 

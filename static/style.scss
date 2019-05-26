@@ -54,8 +54,8 @@ section.box {
 .image img {
   display: block;
   @media screen and (min-width: 768px) {
-    max-width: 15em;
-    max-height: 20em;
+    max-width: 240px;
+    max-height: 320px;
   }
   @media not screen and (min-width: 768px) {
     max-width: 100%;

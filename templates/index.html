@@ -28,8 +28,8 @@
           </summary>
           <div class="images">
             {% for f in images %}
-              <a href="{{ f | basename }}" class="image box">
-                <img src="{{ f | basename }}">
+              <a href="{{ url_for('serve_gallery', filename=(dirname + '/' + f)) }}" class="image box">
+                <img src="{{ url_for('serve_thumb', filename=(dirname + '/' + f)) }}">
               </a>
             {% endfor %}
           </div>
@@ -45,9 +45,9 @@
           </summary>
           <div class="directories">
             {% for f in directories %}
-              <a href="{{ f | basename }}" class="directory box">
+              <a href="{{ url_for('serve_gallery', filename=(dirname + '/' + f)) }}" class="directory box">
                 <i class="fa fa-folder-open" aria-hidden="true"></i>
-                <span class="dirname">{{ f | basename }}</span>
+                <span class="dirname">{{ f }}</span>
               </a>
             {% endfor %}
           </div>
@@ -63,9 +63,9 @@
           </summary>
           <div class="files">
             {% for f in files %}
-              <a href="{{ f | basename }}" class="file box">
+              <a href="{{ url_for('serve_gallery', filename=(dirname + '/' + f)) }}" class="file box">
                 <i class="fa fa-file" aria-hidden="true"></i>
-                <span class="filename">{{ f | basename }}</span>
+                <span class="filename">{{ f }}</span>
               </a>
             {% endfor %}
           </div>

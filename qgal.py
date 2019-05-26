@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template, send_from_directory, safe_join
+from PIL import Image
+from flask import Flask, render_template, send_from_directory, safe_join, redirect, send_file
 from flaskrun import flaskrun
+from io import BytesIO
+import mimetypes
 import os
 
 try:
@@ -10,17 +13,30 @@ except ImportError:
     sort = sorted
 
 app = Flask(__name__)
-app.jinja_env.filters['dirname'] = os.path.dirname
-app.jinja_env.filters['basename'] = os.path.basename
 
 
-@app.route("/", defaults={'filename': "."})
-@app.route("/<path:filename>/")
-def serve_gallery(filename):
+@app.route("/")
+def serve_root():
+    return redirect("/qgal/")
+
+@app.route("/qgal/", defaults={'filename': "."})
+@app.route("/qgal/<path:filename>/")
+def serve_gallery(filename='/'):
     if os.path.isdir(filename):
         return serve_directory(filename)
     else:
         return serve_file(filename)
+
+@app.route("/thumb/<path:filename>")
+def serve_thumb(filename):
+    """Show a thumbnail or a raw file if it's not an image."""
+    with open(filename, 'r+b') as f:
+        with Image.open(f) as image:
+            image.thumbnail((240, 320))
+            img_io = BytesIO()
+            image.convert('RGB').save(img_io, 'JPEG', quality=70)
+            img_io.seek(0)
+            return send_file(img_io, mimetype='image/jpeg')
 
 def serve_file(filename):
     """Show a raw file."""
@@ -28,18 +44,15 @@ def serve_file(filename):
 
 def is_image(filename):
     """Check if the file is an image (judging by the extension)."""
-    extensions = ["." + ext for ext in "jpg jpeg gif png".split()]
-    for ext in extensions:
-        if filename.lower().endswith(ext):
-            return True
-    return False
+    mimetype, encoding = mimetypes.guess_type(filename)
+    return mimetype is not None and mimetype.startswith("image/")
 
 def serve_directory(dirname):
     """Show a gallery."""
     all_files = set(safe_join(dirname, f) for f in os.listdir(dirname))
-    directories = set(filter(os.path.isdir, all_files))
-    images = set(filter(is_image, all_files))
-    regular_files = all_files - images - directories
+    directories = set(map(os.path.basename, filter(os.path.isdir, all_files)))
+    images = set(map(os.path.basename, filter(is_image, all_files)))
+    regular_files = set(map(os.path.basename, all_files)) - images - directories
 
     template_args = {
         'directories': sort(directories),
