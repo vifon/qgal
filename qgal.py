@@ -32,7 +32,7 @@ def serve_thumb(filename):
     """Show a thumbnail or a raw file if it's not an image."""
     with open(filename, 'r+b') as f:
         with Image.open(f) as image:
-            image.thumbnail((240, 320))
+            image.thumbnail((768, 1024))
             img_io = BytesIO()
             image.convert('RGB').save(img_io, 'JPEG', quality=70)
             img_io.seek(0)
